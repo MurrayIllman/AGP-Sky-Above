@@ -1,18 +1,32 @@
 using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.CrossPlatformInput;
+
 
 public class Player : MonoBehaviour {
-	//public float horizontalSpeed = 10;
-	//public float verticalSpeed = 10;
+
 	public Rigidbody rb;
+	private Transform m_Cam;
+	public float movementSpeed;
 
-	void Update() {
-		//float horizontal = Input.GetAxis("Horizontal") * horizontalSpeed * Time.deltaTime;
-		//transform.Translate(horizontal, 0, 0);
-		rb.MovePosition(transform.position + transform.forward *Input.GetAxis("Vertical")* Time.deltaTime + transform.right *Input.GetAxis("Horizontal")* Time.deltaTime);
+	private void Start()
+	{
+		if (Camera.main != null)
+		{
+			m_Cam = Camera.main.transform;
+		}
+			
+	}
 
-		//float vertical = Input.GetAxis("Vertical") * verticalSpeed * Time.deltaTime;
-		//transform.Translate(0, 0, vertical);
-		//rb.MovePosition(transform.position + transform.right *Input.GetAxis("Horizontal")* Time.deltaTime);
+	void FixedUpdate()
+	{
+		float v = Input.GetAxis ("Vertical")*movementSpeed;
+		float h = Input.GetAxis ("Horizontal")*movementSpeed;
+	
+		var moveVectorX = m_Cam.forward * v;
+		var moveVectorY = m_Cam.right * h;
+		var moveVector = ( moveVectorX + moveVectorY ).normalized * movementSpeed * Time.deltaTime;
+		rb.MovePosition(transform.position + m_Cam.forward *v* Time.deltaTime + m_Cam.right *h* Time.deltaTime);
+		transform.LookAt(transform.position + new Vector3( moveVector.x, 0f, moveVector.z ));
 	}
 }
