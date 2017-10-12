@@ -12,8 +12,8 @@ public class MouseAimCamera : MonoBehaviour {
 		float horizontal = Input.GetAxis("Mouse X") * rotateSpeed;
 		float vertical = -Input.GetAxis("Mouse Y") * rotateSpeed;
 
-		float minRotation = -2;
-		float maxRotation = 60;
+		float minRotation = 2;
+		float maxRotation = 81;
 		angle += horizontal;
 		pitch = Mathf.Clamp (pitch + vertical, minRotation, maxRotation);
 
