@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿//Goes on "Mesh" GameObject. Child of "Boss" GameObject
+//Hi phil it's sem
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,15 +10,19 @@ using UnityEngine.UI;
 public class BossScript1 : MonoBehaviour {
 
 	public int HP = 500;
-	public Slider hpSlider;
+//	public Slider hpSlider;
 
-	void Start () 
-	{
-		hpSlider.value = HP;
-	}
+//	void Start () 
+//	{
+//		hpSlider.value = HP;
+//		GameObject.FindGameObjectsWithTag ("attackHitZone");
+//	}
 
-	void Update () 
-	{
-		
-	}
+//	void OnTiggerEnter (Collider info)
+//	{
+//		if (info.name == "attackHitZone") 
+//		{
+//			Debug.Log("VaginaFace");
+//		}
+//	}
 }
