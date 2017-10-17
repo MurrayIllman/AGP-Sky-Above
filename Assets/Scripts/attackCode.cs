@@ -16,7 +16,7 @@ public class attackCode: MonoBehaviour {
 
 	void Start(){
 		bossScriptReference = boss.GetComponent<BossScript1>();
-		bossHPReference = bossScriptReference.HP;
+	//	bossHPReference = bossScriptReference.HP;
 	}
 
 	public void OnTriggerEnter (Collider collider){
@@ -33,6 +33,7 @@ public class attackCode: MonoBehaviour {
 	}
 
 	public void BossDamaged (){
+		print("Im hitting him");
 		bossHPReference -= 50;
 	}
 
