@@ -82,8 +82,9 @@ public class Player : MonoBehaviour {
 		var moveVector = (moveVectorX + moveVectorY).normalized * movementSpeed * Time.deltaTime;
 
 		if (isAutoMoving == false) {
-			rb.MovePosition (transform.position + forward * v * Time.deltaTime + m_Cam.right * h * Time.deltaTime);
-			transform.LookAt (transform.position + new Vector3 (moveVector.x, 0f, moveVector.z));
+			transform.position = transform.position + forward * v * Time.deltaTime + m_Cam.right * h * Time.deltaTime;
+			//rb.MovePosition(rb.position + forward * v * Time.deltaTime + m_Cam.right * h * Time.deltaTime);
+			transform.LookAt (rb.position + new Vector3 (moveVector.x, 0f, moveVector.z));
 		} else {
 			var finalPosition = new Vector3 (Target.position.x, transform.position.y, Target.position.z);
 			finalPosition = finalPosition + Target.forward;

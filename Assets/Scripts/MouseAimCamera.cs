@@ -8,7 +8,7 @@ public class MouseAimCamera : MonoBehaviour {
 	public float pitch = 0.0f;
 	public float angle = 0.0f;
 
-	void LateUpdate() {
+	void Update() {
 		float horizontal = Input.GetAxis("Mouse X") * rotateSpeed;
 		float vertical = -Input.GetAxis("Mouse Y") * rotateSpeed;
 
