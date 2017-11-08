@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class attackCode: MonoBehaviour {
+public class playerAttackCode : MonoBehaviour {
 
 	public Slider sliderUI;
 

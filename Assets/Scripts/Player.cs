@@ -10,12 +10,13 @@ public class Player : MonoBehaviour {
 	public float movementSpeed;
 	public Transform Target;
 	public float chargeSpeed = 0.1f;
-	public bool isDodging;
+	public bool isEvading;
 	bool isAutoMoving = false;
-	float comboTimer = 0.5f;
-	float dodgeTimer = 0.0f;
+	float attackTimer = 0.5f;
+	float evadeTimer = 0.0f;
 	float recoverTimer = 0.0f;
-	Vector2 dodgeDirection;
+	Vector2 evadeDirection;
+	public int hitPoints = 100;
 
 	Collider attackCollider;
 	//attackCode aCode;
@@ -41,19 +42,19 @@ public class Player : MonoBehaviour {
 		float v = Input.GetAxisRaw ("Vertical") * movementSpeed;
 		float h = Input.GetAxisRaw ("Horizontal") * movementSpeed;
 
-		if (Input.GetKey (KeyCode.Space) && recoverTimer <= 0.0f && dodgeTimer <= 0.0f) {
-			dodgeTimer = 0.18f;
-			dodgeDirection = new Vector2 (h, v);
-			isDodging = true;
+		if (Input.GetKey (KeyCode.Space) && recoverTimer <= 0.0f && evadeTimer <= 0.0f) {
+			evadeTimer = 0.18f;
+			evadeDirection = new Vector2 (h, v);
+			isEvading = true;
 		}
 
-		if (dodgeTimer > 0.0f) {
-			dodgeTimer -= Time.deltaTime; //timer counts down
+		if (evadeTimer > 0.0f) {
+			evadeTimer -= Time.deltaTime; //timer counts down
 
-			if (dodgeTimer <= 0.0f) //timer reaches 0, do shit
+			if (evadeTimer <= 0.0f) //timer reaches 0, do shit
 			{
 				recoverTimer = 0.7f;
-				isDodging = false;
+				isEvading = false;
 			}
 		}
 
@@ -62,9 +63,9 @@ public class Player : MonoBehaviour {
 			recoverTimer -= Time.deltaTime;
 		}
 
-		if (dodgeTimer > 0.0f) {
-			v = dodgeDirection.y * movementSpeed * 1.02f;
-			h = dodgeDirection.x * movementSpeed * 1.02f;
+		if (evadeTimer > 0.0f) {
+			v = evadeDirection.y * movementSpeed * 1.02f;
+			h = evadeDirection.x * movementSpeed * 1.02f;
 		}
 
 		if (recoverTimer > 0.0f) {
@@ -72,7 +73,7 @@ public class Player : MonoBehaviour {
 			h = 0.0f;
 		}
 
-		if (!isDodging) {
+		if (!isEvading) {
 			//Put look camera shit here
 		}
 
@@ -107,12 +108,19 @@ public class Player : MonoBehaviour {
 			//aCode.enabled = true;
 		}
 
-		comboTimer -= Time.deltaTime; //timer counts down
+		attackTimer -= Time.deltaTime; //timer counts down
 
-		if (comboTimer <= 0) //timer reaches 0, do shit
+		if (attackTimer <= 0) //timer reaches 0, do shit
 		{
 			attackCollider.enabled = false;
-			comboTimer = 0.5f;
+			attackTimer = 0.5f;
+		}
+	}
+
+	void TakeDamage(int damage)
+	{
+		if (!isEvading) {
+			hitPoints -= damage;
 		}
 	}
 }
