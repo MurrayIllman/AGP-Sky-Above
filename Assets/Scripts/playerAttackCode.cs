@@ -21,7 +21,7 @@ public class playerAttackCode : MonoBehaviour {
 
 	public void OnTriggerEnter (Collider collider){
 
-		if(GameObject.FindGameObjectWithTag("Boss")){
+		if(collider.tag == "Boss"){
 			BossDamaged ();
 			SliderFunction ();
 		}

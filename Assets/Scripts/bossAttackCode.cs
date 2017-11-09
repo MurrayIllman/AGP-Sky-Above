@@ -8,7 +8,7 @@ public class bossAttackCode: MonoBehaviour {
 	public Slider sliderUI;
 
 	public GameObject player;
-	public BossScript1 playerScriptReference;
+	public Player playerScriptReference;
 	public int playerHPReference;
 
 	void Start(){
@@ -18,7 +18,7 @@ public class bossAttackCode: MonoBehaviour {
 
 	public void OnTriggerEnter (Collider collider){
 
-		if(GameObject.FindGameObjectWithTag("Player")){
+		if(collider.tag == "Player"){
 			PlayerDamaged ();
 			SliderFunction ();
 		}
