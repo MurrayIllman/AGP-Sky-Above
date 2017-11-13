@@ -17,6 +17,7 @@ public class Player : MonoBehaviour {
 	float recoverTimer = 0.0f;
 	Vector2 evadeDirection;
 	public int hitPoints = 100;
+	public Collider playerHitzone;
 
 	Collider attackCollider;
 	//attackCode aCode;
@@ -73,9 +74,14 @@ public class Player : MonoBehaviour {
 			h = 0.0f;
 		}
 
-		if (!isEvading) {
-			//Put look camera shit here
+		if (isEvading) {
+			playerHitzone.enabled = false;
+			print ("WORKS");
 		}
+		else {
+			playerHitzone.enabled = true;
+		}
+	
 
 		var forward = Vector3.Cross (m_Cam.right, Vector3.up);
 		var moveVectorX = forward * v;
