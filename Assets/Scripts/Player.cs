@@ -37,9 +37,6 @@ public class Player : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		// This make the boss always look at the player
-		Target.LookAt (transform);
-
 		float v = Input.GetAxisRaw ("Vertical") * movementSpeed;
 		float h = Input.GetAxisRaw ("Horizontal") * movementSpeed;
 

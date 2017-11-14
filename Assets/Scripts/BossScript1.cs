@@ -7,22 +7,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BossScript1 : MonoBehaviour {
-
+public class BossScript1 : MonoBehaviour
+{
+	public Transform Player;
+	public patternOne pattern1;
 	public int HP = 500;
-//	public Slider hpSlider;
 
-//	void Start () 
-//	{
-//		hpSlider.value = HP;
-//		GameObject.FindGameObjectsWithTag ("attackHitZone");
-//	}
+	void Start ()
+	{
+		StartCoroutine (AttackRoutine ());
+	}
 
-//	void OnTiggerEnter (Collider info)
-//	{
-//		if (info.name == "attackHitZone") 
-//		{
-//			Debug.Log("VaginaFace");
-//		}
-//	}
+	IEnumerator AttackRoutine()
+	{
+		while (true) {
+			
+			float time = 0.0f;
+
+			while (time < 5.0f) {
+
+				time += Time.deltaTime;
+				// This make the boss always look at the player
+				transform.LookAt (Player);
+				yield return null;
+			}
+
+			yield return pattern1.Attack ();
+		}
+	}
 }
