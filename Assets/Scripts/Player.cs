@@ -40,6 +40,8 @@ public class Player : MonoBehaviour {
 		float v = Input.GetAxisRaw ("Vertical") * movementSpeed;
 		float h = Input.GetAxisRaw ("Horizontal") * movementSpeed;
 
+		rb.velocity = Vector3.zero;
+
 		if (Input.GetKey (KeyCode.Space) && recoverTimer <= 0.0f && evadeTimer <= 0.0f) {
 			evadeTimer = 0.18f;
 			evadeDirection = new Vector2 (h, v);

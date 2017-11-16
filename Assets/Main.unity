@@ -1305,7 +1305,7 @@ GameObject:
   - component: {fileID: 1885759223}
   - component: {fileID: 1885759224}
   m_Layer: 0
-  m_Name: PivotPoint
+  m_Name: PivotPoint(RightArm)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1464,7 +1464,7 @@ Prefab:
     - target: {fileID: 54198365962380424, guid: f9411c37b06da7d41a0279f3d5ab27a5,
         type: 2}
       propertyPath: m_Constraints
-      value: 84
+      value: 116
       objectReference: {fileID: 0}
     - target: {fileID: 23294254372946908, guid: f9411c37b06da7d41a0279f3d5ab27a5,
         type: 2}
@@ -1493,6 +1493,11 @@ Prefab:
     - target: {fileID: 1998151417947808, guid: f9411c37b06da7d41a0279f3d5ab27a5, type: 2}
       propertyPath: m_Name
       value: playerAttackHitZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 136808206803502360, guid: f9411c37b06da7d41a0279f3d5ab27a5,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9411c37b06da7d41a0279f3d5ab27a5, type: 2}
