@@ -6,11 +6,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
+
+public interface IAttack
+{
+	IEnumerator Attack ();
+}
 
 public class BossScript1 : MonoBehaviour
 {
 	public Transform Player;
-	public patternOne pattern1;
+	public Behaviour[] attacks;
 	public int HP = 500;
 
 	void Start ()
@@ -20,19 +26,26 @@ public class BossScript1 : MonoBehaviour
 
 	IEnumerator AttackRoutine()
 	{
+		var random = new System.Random();
+		var shuffledAttacks = attacks.OrderBy((attack) => random.Next());
+
 		while (true) {
-			
-			float time = 0.0f;
 
-			while (time < 5.0f) {
+			foreach (IAttack attack in shuffledAttacks) {
 
-				time += Time.deltaTime;
-				// This make the boss always look at the player
-				transform.LookAt (Player);
-				yield return null;
+				float time = 0.0f;
+
+				while (time < 5.0f) {
+
+					time += Time.deltaTime;
+					// This make the boss always look at the player
+					transform.LookAt (Player);
+					yield return null;
+				}
+
+				yield return attack.Attack ();
 			}
-
-			yield return pattern1.Attack ();
+			
 		}
 	}
 }

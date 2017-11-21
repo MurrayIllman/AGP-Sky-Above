@@ -43,7 +43,7 @@ public class Player : MonoBehaviour {
 		rb.velocity = Vector3.zero;
 
 		if (Input.GetKey (KeyCode.Space) && recoverTimer <= 0.0f && evadeTimer <= 0.0f) {
-			evadeTimer = 0.18f;
+			evadeTimer = 0.09f;
 			evadeDirection = new Vector2 (h, v);
 			isEvading = true;
 		}
@@ -75,7 +75,6 @@ public class Player : MonoBehaviour {
 
 		if (isEvading) {
 			playerHitzone.enabled = false;
-			print ("WORKS");
 		}
 		else {
 			playerHitzone.enabled = true;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class patternTwo : MonoBehaviour {
+public class patternTwo : MonoBehaviour, IAttack {
 
 	public float rotationSpeed = 10;
 

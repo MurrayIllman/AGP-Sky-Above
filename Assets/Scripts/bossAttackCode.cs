@@ -6,14 +6,15 @@ using UnityEngine.UI;
 public class bossAttackCode: MonoBehaviour {
 
 	public Slider sliderUI;
-
+	public bool attackOportunity;
 	public GameObject player;
 	public Player playerScriptReference;
 	public int playerHPReference;
 
+
 	void Start(){
 		playerScriptReference = player.GetComponent<Player>();
-		//	bossHPReference = bossScriptReference.HP;
+	
 	}
 
 	public void OnTriggerEnter (Collider collider){
@@ -33,7 +34,7 @@ public class bossAttackCode: MonoBehaviour {
 		print("Im being hit");
 		playerHPReference -= 10;
 	}
-
+			
 	public void SliderFunction(){
 		sliderUI.value = playerHPReference;
 	}
