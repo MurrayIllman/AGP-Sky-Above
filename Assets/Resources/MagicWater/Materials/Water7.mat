@@ -92,7 +92,7 @@ Material:
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
-    - _NormalTime: 13.334901
+    - _NormalTime: 21.321564
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
@@ -106,6 +106,6 @@ Material:
     - _FogColor: {r: 1, g: 1, b: 1, a: 1}
     - _Params: {r: 0, g: 0, b: 0, a: 0}
     - _SkyColor: {r: 1, g: 1, b: 1, a: 0}
-    - _SunColor: {r: 0.89, g: 0.73, b: 0.56, a: 0}
+    - _SunColor: {r: 1, g: 1, b: 1, a: 0}
     - _SunLightDir: {r: 0.30323032, g: -0.43837115, b: -0.8460982, a: 0}
-    - _WaterColor: {r: 0.015686275, g: 0.21568628, b: 0.3254902, a: 0}
+    - _WaterColor: {r: 0, g: 0.47637826, b: 0.5588235, a: 0}
