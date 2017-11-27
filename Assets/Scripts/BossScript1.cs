@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 using System.Linq;
 
 public interface IAttack
@@ -19,9 +20,36 @@ public class BossScript1 : MonoBehaviour
 	public Behaviour[] attacks;
 	public int HP = 500;
 
+	[SerializeField]
+	Transform _destination;
+
+	NavMeshAgent _navMeshAgent;
+
 	void Start ()
 	{
 		StartCoroutine (AttackRoutine ());
+	}
+
+	void Update ()
+	{
+		_navMeshAgent = this.GetComponent<NavMeshAgent> ();
+		if (_navMeshAgent == null) 
+		{
+			Debug.LogError ("Nav mesh agent component not attached to" + gameObject.name);
+		}
+		else 
+		{
+			SetDestination();
+		}
+	}
+
+	private void SetDestination()
+	{
+		if (_destination != null)
+		{
+			Vector3 targetVector = _destination.transform.position;
+			_navMeshAgent.SetDestination (targetVector);
+		}
 	}
 
 	IEnumerator AttackRoutine()
