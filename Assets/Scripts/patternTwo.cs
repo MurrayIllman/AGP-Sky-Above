@@ -24,6 +24,7 @@ public class patternTwo : MonoBehaviour, IAttack {
 			rotation += rotationSpeed * Time.deltaTime;
 			transform.localRotation = Quaternion.Euler (0.0f, -rotation, 0.0f);
 			yield return null;
+
 			rend.sharedMaterial = telegraphColours [0];
 		}
 
