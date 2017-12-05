@@ -10,7 +10,7 @@ public class bossAttackCode: MonoBehaviour {
 	public GameObject player;
 	public Player playerScriptReference;
 	public int playerHPReference;
-
+	public float force = 10.0f;
 
 	void Start(){
 		playerScriptReference = player.GetComponent<Player>();
@@ -21,6 +21,12 @@ public class bossAttackCode: MonoBehaviour {
 
 		if(collider.tag == "Player"){
 			PlayerDamaged ();
+			Player player = collider.GetComponent<Player> ();
+			if (player != null) {
+				Vector3 attackVector = collider.transform.position - transform.position;
+				attackVector.y = 0.0f;
+				player.KnockBack(attackVector.normalized * force);
+			}
 			SliderFunction ();
 		}
 
